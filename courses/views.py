@@ -6,17 +6,20 @@ from django.http import HttpResponse
 def kurslar(request):
     return HttpResponse('kurs listesi')
 
-def details(request):
-    return HttpResponse('kurs detay sayfası')
+def details(request, kurs_adi):
+    return HttpResponse(f"{kurs_adi} detay sayfası")
 
-def getCoursesByCategory(request, category):
+def getCoursesByCategory(request, category_name):
     text = ""
 
-    if(category == "programlama"):
+    if(category_name == "programlama"):
         text = "programlama kategorisine ait kurslar"
-    elif (category == "web-gelistirme"):
+    elif (category_name == "web-gelistirme"):
         text = "web geliştirme kategorisine ait kurslar"
     else:
         text = "yanlış kategori seçimi"
 
     return HttpResponse(text)
+
+def getCoursesByCategoryId(request, category_id):
+    return HttpResponse(category_id)
