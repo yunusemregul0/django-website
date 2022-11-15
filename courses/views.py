@@ -8,6 +8,11 @@ data = {
     "mobil":"mobil kategorisine ait kurslar",
 }
 
+# http://127.0.0.1:8000/kurslar
+
+def index(request):
+    return render(request, 'courses/index.html')
+
 def kurslar(request):
     list_items = ""
     category_list = list(data.keys())
