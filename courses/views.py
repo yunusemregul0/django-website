@@ -8,8 +8,6 @@ data = {
     "mobil":"mobil kategorisine ait kurslar",
 }
 
-# http://127.0.0.1:8000/kurslar
-
 def index(request):
     return render(request, 'courses/index.html')
 
@@ -31,7 +29,10 @@ def details(request, kurs_adi):
 def getCoursesByCategory(request, category_name):
     try:
         category_text = data[category_name];    
-        return HttpResponse(category_text)
+        return render(request, 'courses/kurslar.html', {
+            'category': category_name,
+            'category_text': category_text 
+        })
     except:
         return HttpResponseNotFound("<h1>yanlış kategori seçimi</h1>")
 
