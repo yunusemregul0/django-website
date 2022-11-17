@@ -5,5 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>kurslar</h1>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3">
+                <!--menu-->
+               {% include 'courses/partials/_categories.html' %}             
+            </div>
+            <div class="col-9">
+                <!--content-->                
+            </div>
+        </div>
+    </div>
 {% endblock %}
