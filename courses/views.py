@@ -2,6 +2,7 @@ from datetime import date,datetime
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from .models import Course
 
 data = {
     "programlama":"programlama kategorisine ait kurslar",
@@ -47,13 +48,17 @@ db = {
 }
 
 def index(request):
-    kurslar = [course for course in db["courses"] if course["isActive"]==True]
+    kurslar = Course.objects.filter(isActive=1)
     kategoriler = db["categories"]
 
     return render(request, 'courses/index.html', {
         'categories': kategoriler,
         'courses': kurslar
     })
+
+# Category model
+# migration - migrate
+# category list
 
 def details(request, kurs_adi):
     return HttpResponse(f"{kurs_adi} detay sayfası")
