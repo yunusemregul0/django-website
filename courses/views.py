@@ -2,7 +2,7 @@ from datetime import date,datetime
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from .models import Course
+from .models import Course, Category
 
 data = {
     "programlama":"programlama kategorisine ait kurslar",
@@ -49,7 +49,7 @@ db = {
 
 def index(request):
     kurslar = Course.objects.filter(isActive=1)
-    kategoriler = db["categories"]
+    kategoriler = Category.objects.all()
 
     return render(request, 'courses/index.html', {
         'categories': kategoriler,
