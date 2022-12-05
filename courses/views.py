@@ -23,6 +23,14 @@ def create_course(request):
         form = CourseCreateForm()
     return render(request, "courses/create-course.html", {"form":form})
 
+def course_list(request):
+    kurslar = Course.objects.all()
+    return render(request, 'courses/course-list.html', {
+        'courses': kurslar
+    })
+
+def course_edit(request, id):
+    pass
 
 def search(request):
     if "q" in request.GET and request.GET["q"] != "":
