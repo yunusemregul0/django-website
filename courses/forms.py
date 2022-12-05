@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, Textarea
+from django.forms import SelectMultiple, TextInput, Textarea
 
 from courses.models import Course
 
@@ -28,6 +28,31 @@ class CourseCreateForm(forms.ModelForm):
             "description": Textarea(attrs={"class":"form-control"}),
             "imageUrl": TextInput(attrs={"class":"form-control"}),
             "slug": TextInput(attrs={"class":"form-control"}),
+        }
+        error_messages = {
+            "title": {
+                "required":"kurs başlığı girmelisiniz.",
+                "max_length": "maksimum 50 karakter girmelisiniz"
+            },
+            "description": {
+                "required":"kurs açıklaması gereklidir."
+            }
+        }
+        
+class CourseEditForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ('title','description','imageUrl','slug','categories','isActive')
+        labels = {
+            'title':"kurs başlığı",
+            'description':'açıklama'
+        }
+        widgets = {
+            "title": TextInput(attrs={"class":"form-control"}),
+            "description": Textarea(attrs={"class":"form-control"}),
+            "imageUrl": TextInput(attrs={"class":"form-control"}),
+            "slug": TextInput(attrs={"class":"form-control"}),
+            "categories": SelectMultiple(attrs={"class":"form-control"})
         }
         error_messages = {
             "title": {
