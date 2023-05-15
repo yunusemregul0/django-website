@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'araclar/css/style.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    {{ arac.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+                <img class="img-fluid rounded" src="{% static 'araclar/img/'|add:arac.imageUrl %}" alt="{{ arac.title }}">
+            </div>
+            <div class="col-8">
+                <h1 class="h3">{{ arac.title }}</h1>
+                <p>
+                    {{ arac.description }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js_files %}
+    <script src="{% static 'araclar/js/script.js' %}"></script>
+{% endblock %}

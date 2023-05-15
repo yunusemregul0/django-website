@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'araclar/css/style.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    araclar
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3">
+               {% include 'araclar/partials/_categories.html' %}    
+            </div>
+            <div class="col-9">
+                {% if arac|length == 0 %}
+                    <div class="alert alert-warning">Araç Bulunamadı.</div>
+                {% endif %}
+                
+                {% for arac in arac %}
+                    {% include 'araclar/partials/_course.html' %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js_files %}
+    <script src="{% static 'araclar/static/js/script.js' %}"></script>
+{% endblock %}

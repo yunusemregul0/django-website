@@ -1,0 +1,19 @@
+{% load static %}
+<div class="card mb-3">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid rounded-start" src="{{ arac.image.url }}" alt="{{ arac.title }}">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a >
+                        {{ arac.title }}
+                    </a>
+                </h5>
+                <p class="card-text">{{ arac.description|truncatechars:30 }}</p>
+                <p>{{ arac.date|date:'SHORT_DATE_FORMAT' }}</p>
+            </div>
+        </div>
+    </div>
+</div>
